@@ -1,6 +1,9 @@
 package com.jetbrains.handson.httpapi
 
 import com.jetbrains.handson.httpapi.routes.customerRouting
+import com.jetbrains.handson.httpapi.routes.getOrderRoute
+import com.jetbrains.handson.httpapi.routes.listOrderRoute
+import com.jetbrains.handson.httpapi.routes.totalizeOrderRoute
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.routing.*
@@ -15,5 +18,14 @@ fun Application.module() {
     }
     install(Routing) {
         customerRouting()
+    }
+    registerOrderRoutes()
+}
+
+fun Application.registerOrderRoutes() {
+    routing {
+        listOrderRoute()
+        getOrderRoute()
+        totalizeOrderRoute()
     }
 }
